@@ -33,7 +33,7 @@ function App() {
       <h1>Version</h1>
       <h2 id="version"></h2>
       <p id="message">no updates available</p>
-      {showButton && <button onClick={() => restart()}>Restart</button>}
+      {showButton && <button onClick={restart}>Restart</button>}
     </div>
   );
 }
