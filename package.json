@@ -1,6 +1,6 @@
 {
   "name": "electron-react",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "public/main.js",
   "homepage": "./",
   "win": {
