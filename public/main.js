@@ -19,6 +19,7 @@ function createWindow() {
     mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
 
     mainWindow.once('ready-to-show', () => {
+        console.log("Update sh");
         autoUpdater.checkForUpdatesAndNotify();
     });
 }
@@ -39,9 +40,11 @@ ipcMain.on('app_version', (event) => {
     event.sender.send('app_version', { version: app.getVersion() });
 });
 autoUpdater.on('update-available', () => {
+    console.log("Update av");
     mainWindow.webContents.send('update_available');
 });
 autoUpdater.on('update-downloaded', () => {
+    console.log("Update dw");
     mainWindow.webContents.send('update_downloaded');
 });
 ipcMain.on('restart_app', () => {
