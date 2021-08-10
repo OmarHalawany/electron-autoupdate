@@ -1,0 +1,59 @@
+{
+  "name": "electron-react",
+  "version": "1.0.0",
+  "main": "public/main.js",
+  "homepage": "./",
+  "win": {
+    "target": "nsis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OmarHalawany/electron-autoupdate.git"
+  },
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "electron-is-dev": "^2.0.0",
+    "electron-updater": "^4.3.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "set BROWSER=none && react-scripts start",
+    "electron-dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-start": "electron .",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "preelectron-pack": "npm run build",
+    "electron-pack": "electron-builder build -c.extraMetadata.main=build/main.js -p always"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "electron": "^13.1.8",
+    "electron-builder": "^22.11.7",
+    "wait-on": "^6.0.0"
+  }
+}
