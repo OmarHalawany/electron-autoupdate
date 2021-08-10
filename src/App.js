@@ -1,15 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   const [showButton, setShowButton] = useState(false);
-  useEffect(() => {
-    let version = document.getElementById("version");
-    window.electron.response("app_version", (data) => {
-      version.innerText = data.version
-    });
-    window.electron.request("app_version");
-  }, [])
 
+  window.electron.request("app_version");
+  window.electron.response("app_version", (data) => {
+    let version = document.getElementById("version");
+    version.innerText = data.version
+  });
   window.electron.response('update_available', () => {
     let message = document.getElementById("message");
     message.innerText = 'A new update is available. Downloading now...';
