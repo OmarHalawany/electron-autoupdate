@@ -41,6 +41,10 @@ app.on('window-all-closed', function () {
 ipcMain.on('app_version', (event) => {
     event.sender.send('app_version', { version: app.getVersion() });
 });
+ipcMain.on('restart_app', () => {
+    console.log("quit")
+    autoUpdater.quitAndInstall();
+});
 autoUpdater.on('update-available', () => {
     console.log("Update av");
     mainWindow.webContents.send('update_available');
@@ -48,9 +52,5 @@ autoUpdater.on('update-available', () => {
 autoUpdater.on('update-downloaded', () => {
     console.log("Update dw");
     mainWindow.webContents.send('update_downloaded');
-});
-ipcMain.on('restart_app', () => {
-    console.log("quit")
-    autoUpdater.quitAndInstall();
 });
 
